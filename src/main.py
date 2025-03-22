@@ -82,13 +82,20 @@ def process_files():
         ],
     )
 
-    # Сохранение
-    output_path = os.path.join(settings.output_dir, settings.output_file)
+    # CSV
+    csv_path = os.path.join(settings.output_dir, settings.output_csv_file)
     report.reset_index().rename(columns={"index": "Имя"}).to_csv(
-        output_path, index=False, encoding="utf-8-sig"
+        csv_path, index=False, encoding="utf-8-sig"
     )
+
+    # XLSX
+    xlsx_path = os.path.join(settings.output_dir, settings.output_xlsx_file)
+    report.reset_index().rename(columns={"index": "Имя"}).to_excel(
+        xlsx_path, index=False, engine="openpyxl"
+    )
+
+    print(f"Отчеты сохранены:\n- CSV: {csv_path}\n- XLSX: {xlsx_path}")
 
 
 if __name__ == "__main__":
     process_files()
-    print(f"Отчет сохранен: {os.path.join(settings.output_dir, settings.output_file)}")
