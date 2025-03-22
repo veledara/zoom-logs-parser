@@ -1,61 +1,62 @@
 # zoom-logs-parser
 
-## Описание
+## Description
 
-Скрипт для анализа логов Zoom-конференций и создания сводного отчета посещаемости. 
+A script for analyzing Zoom conference logs and generating an attendance summary report. 
 
-Основные функции:
-- Автоматически определяет даты проведения лекций/встреч из содержимого логов
-- Извлекает список всех участников из набора CSV-файлов
-- Формирует отчет в виде матрицы участия в форматах `.csv` и `.xlsx`:
-  - Строки: уникальные имена участников
-  - Столбцы: даты проведения лекций/встреч
-  - Значения: 1 (присутствовал) или 0 (отсутствовал)
+Key features:
+- Automatically detects lecture/meeting dates from log contents
+- Extracts a list of all participants from a set of CSV files
+- Generates a participation matrix report in .csv and .xlsx formats:
+    - Rows: unique participant names
+    - Columns: lecture/meeting dates
+    - Values: 1 (attended) or 0 (absent)
 
-Может быть использован для облегчения заполнения таблицы посещаемости онлайн-лекций.
+Can be used to simplify filling out online lecture attendance tables.
 
-![Итоговый отчет](https://github.com/user-attachments/assets/34a09278-479c-4194-a0fb-8cc9376d390f)
+![Final Report](https://github.com/user-attachments/assets/ee5437f4-f14b-4299-8b90-261bb5fb9a33)
 
-## Установка
+## Installation
 
-1. Клонировать репозиторий:
+1. Clone the repository:
 ```bash
 git clone https://github.com/veledara/zoom-logs-parser.git
 
 cd zoom-logs-parser
 ```
 
-2. Установить [poetry](https://python-poetry.org/docs/#installation) (если не установлен)
+2. Install [poetry](https://python-poetry.org/docs/#installation) (if not installed)
 
-3. Установить зависимости:
+3. Install dependencies:
 ```bash
 poetry install
 ```
-4. Создать файл окружения по примеру:
+4. Create environment file:
 ```bash
 cp .env.example .env
 ```
 
-## Настройка окружения
-Отредактируйте файл `.env` на ваше усмотрение:
+## Environment Configuration
+Edit the `.env` file according to your needs:
 
 ```ini
-input_dir=logs  # Директория с исходными CSV-файлами
-output_dir=output  # Директория для сохранения отчета
-output_csv_file=full_report.csv  # Имя итогового файла формата .csv
-output_xlsx_file=full_report.xlsx  # Имя итогового файла формата .xlsx
+input_dir=logs                     # Directory containing source CSV files
+output_dir=output                  # Directory for report output
+output_csv_file=full_report.csv    # Output CSV filename
+output_xlsx_file=full_report.xlsx  # Output Excel filename
 ```
 
-## Использование
-Поместите CSV-логи Zoom в указанную в настройках директорию (по умолчанию `logs/`)
+## Usage
+Place Zoom CSV logs in the configured input directory (default: `logs/`)
 
-Запустите скрипт:
-
+Run the script:
 ```bash
 poetry run python src/main.py
 ```
-или
+or
 
 ```bash
 python src/main.py
 ```
+
+Generated reports will be saved in the specified output directory.
