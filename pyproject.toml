@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "zoom-parser"
+version = "0.1.0"
+description = ""
+authors = ["veledara <painriddlegaming@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic-settings = "^2.8.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
